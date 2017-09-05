@@ -3,3 +3,9 @@
 ################################################################################
 
 /CodeChallenge/CodeChallenge/CodeChallenge/bin/Debug
+/CodeChallenge/CodeChallenge/CodeChallenge/obj/Debug
+/CodeChallenge/CodeChallenge/CodeChallenge.Droid/bin/Debug
+/CodeChallenge/CodeChallenge/CodeChallenge.Droid/obj/Debug
+/CodeChallenge/CodeChallenge/CodeChallenge.iOS/bin/iPhone/Debug
+/CodeChallenge/CodeChallenge/CodeChallenge.iOS/obj/iPhone/Debug
+/CodeChallenge/packages
