@@ -27,7 +27,7 @@ namespace CodeChallenge.Views.Controls
 
         private void TextChangedEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this.TextChangedCommand.Execute(e.NewTextValue);
+            this.TextChangedCommand.Execute(e);
         }
 
         public void Dispose()

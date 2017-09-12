@@ -5,7 +5,20 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CodeChallenge.Views.MainPage"
              Title="MainPage">
-  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
-  </StackLayout>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="200"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <Frame Grid.Row="0" Grid.Column="0" HasShadow="True" CornerRadius="5" BackgroundColor="Red" Margin="5">
+      <StackLayout>
+        <Image Source="codeicon" />
+        <Label Text="Keyword Challenge" TextColor="#FFFFFF" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="25"/>
+      </StackLayout>
+    </Frame>
+  </Grid>
 </ContentPage>
