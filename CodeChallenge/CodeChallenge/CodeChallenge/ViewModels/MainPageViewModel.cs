@@ -9,17 +9,23 @@ namespace CodeChallenge.ViewModels
 {
     public class MainPageViewModel : BindableBase, INavigationAware
     {
-        private string _title;
-        public string Title
+        #region Commands
+        public DelegateCommand KeywordChallengeCommand { get; set; }
+        #endregion
+
+        private INavigationService _navigationService;
+        public MainPageViewModel(INavigationService navigationService)
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            KeywordChallengeCommand = new DelegateCommand(NavigateToKeywordChallenge);
+            _navigationService = navigationService;
         }
 
-        public MainPageViewModel()
+        #region CommandsMethods
+        private void NavigateToKeywordChallenge()
         {
-
+            _navigationService.NavigateAsync("KeywordChallengePage");
         }
+        #endregion
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -33,8 +39,6 @@ namespace CodeChallenge.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("title"))
-                Title = (string)parameters["title"] + " and Prism";
         }
     }
 }

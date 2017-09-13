@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -13,12 +9,12 @@ namespace CodeChallenge.Views.Controls
     {
         public ICommand TextChangedCommand
         {
-            get { return (Command)GetValue(CommandProperty); }
-            set { SetValue(CommandProperty, value); }
+            get { return (Command)GetValue(TextChangedCommandProperty); }
+            set { SetValue(TextChangedCommandProperty, value); }
         }
 
-        public static readonly BindableProperty CommandProperty =
-            BindableProperty.Create(nameof(TextChangedCommand), typeof(Command), typeof(TextChangedEntry), defaultBindingMode: BindingMode.OneWay, defaultValue: default(Command));
+        public static readonly BindableProperty TextChangedCommandProperty =
+            BindableProperty.Create(nameof(TextChangedCommand), typeof(Command), typeof(TextChangedEntry), defaultBindingMode: BindingMode.TwoWay, defaultValue: default(Command));
 
         public TextChangedEntry()
         {
