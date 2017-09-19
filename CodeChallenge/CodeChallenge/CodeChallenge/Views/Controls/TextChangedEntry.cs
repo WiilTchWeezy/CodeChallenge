@@ -9,12 +9,12 @@ namespace CodeChallenge.Views.Controls
     {
         public ICommand TextChangedCommand
         {
-            get { return (Command)GetValue(TextChangedCommandProperty); }
+            get { return (ICommand)GetValue(TextChangedCommandProperty); }
             set { SetValue(TextChangedCommandProperty, value); }
         }
 
         public static readonly BindableProperty TextChangedCommandProperty =
-            BindableProperty.Create(nameof(TextChangedCommand), typeof(Command), typeof(TextChangedEntry), defaultBindingMode: BindingMode.TwoWay, defaultValue: default(Command));
+            BindableProperty.Create(nameof(TextChangedCommand), typeof(ICommand), typeof(TextChangedEntry), default(ICommand));
 
         public TextChangedEntry()
         {

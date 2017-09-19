@@ -5,7 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CodeChallenge.Views.MainPage"
              Title="CodeChallenge"
-             xmlns:controls="clr-namespace:CodeChallenge.Views.Controls;assembly=CodeChallenge">
+             xmlns:controls="clr-namespace:CodeChallenge.Views.Controls">
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="100"/>
@@ -14,7 +14,7 @@
       <ColumnDefinition Width="*"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <controls:CustomFrame TapCommand="{Binding KeywordChallengeCommand}" Grid.Row="0" Grid.Column="0" HasShadow="True" BackgroundColor="Red" Margin="5">
+    <controls:CustomFrame Grid.Row="0" Grid.Column="0" HasShadow="True" BackgroundColor="Red" Margin="5" TapCommand="{Binding KeywordChallengeCommand}">
       <StackLayout>
         <Image Source="codeicon"/>
         <Label Text="Keyword Challenge" TextColor="#FFFFFF" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="14"/>
