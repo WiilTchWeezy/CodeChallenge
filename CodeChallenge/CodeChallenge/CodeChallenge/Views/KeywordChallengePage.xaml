@@ -5,15 +5,16 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CodeChallenge.Views.KeywordChallengePage"
              xmlns:controls="clr-namespace:CodeChallenge.Views.Controls">
-  <StackLayout>
-    <Label Text="How many keywords from C# you can remember ?"  VerticalOptions="CenterAndExpand"/>
-    <controls:TextChangedEntry TextChangedCommand="{Binding TextChangedCommand}" VerticalOptions="FillAndExpand"/>
-    <ListView ItemsSource="{Binding KeywordsFinded}">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <TextCell Text="{Binding .}" />
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
-  </StackLayout>
+    <StackLayout>
+        <Label Text="{Binding ScoreText}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
+        <Label Text="How many keywords from C# you can remember ?"  VerticalOptions="CenterAndExpand" FontAttributes="Bold" Margin="5" />
+        <controls:TextChangedEntry Text="{Binding TextTyped}" TextChangedCommand="{Binding TextChangedCommand}" HorizontalOptions="FillAndExpand"/>
+        <ListView ItemsSource="{Binding KeywordsFinded}" VerticalOptions="StartAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding .}" TextColor="Black"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
