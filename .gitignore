@@ -9,3 +9,6 @@
 /CodeChallenge/CodeChallenge/CodeChallenge.iOS/bin/iPhone/Debug
 /CodeChallenge/CodeChallenge/CodeChallenge.iOS/obj/iPhone/Debug
 /CodeChallenge/packages
+/.vs/CodeChallenge/v15
+/.vs
+/CodeChallenge/.vs/CodeChallenge/v15/Server/sqlite3

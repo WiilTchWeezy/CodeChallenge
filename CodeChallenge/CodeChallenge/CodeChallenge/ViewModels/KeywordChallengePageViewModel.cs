@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using CodeChallenge.Infra;
+using CodeChallenge.Infra.DatabaseObject;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -44,7 +46,8 @@ namespace CodeChallenge.ViewModels
         public List<string> Keywords { get; set; }
         public ObservableCollection<string> KeywordsFinded { get; set; }
         public int AllKeywords { get; set; }
-        public KeywordChallengePageViewModel()
+        private ILocalDatabase _localDatabase;
+        public KeywordChallengePageViewModel(ILocalDatabase localDatabase)
         {
             Keywords = new List<string>();
             KeywordsFinded = new ObservableCollection<string>();
@@ -52,6 +55,7 @@ namespace CodeChallenge.ViewModels
             FillKeywords();
             AllKeywords = Keywords.Count;
             ScoreText = String.Format("{0} of {1}", KeywordsFinded.Count, AllKeywords);
+            _localDatabase = localDatabase;
         }
         #region CommandsMethods
         private void TextChanged(TextChangedEventArgs e)
@@ -148,14 +152,37 @@ namespace CodeChallenge.ViewModels
             Keywords.Add("while");
         }
 
+        private void SaveGame()
+        {
+            _localDatabase.Save(new KeywordGame {
+                Id = new Guid().ToString(),
+                Keywords = this.Keywords,
+                KeywordsFinded = this.KeywordsFinded.ToList()
+            });
+        }
+        private void GetGame()
+        {
+            var currentGames = _localDatabase.Get<KeywordGame>();
+            var currentGame = currentGames.LastOrDefault();
+            if (currentGame != null)
+            {
+                KeywordsFinded.Clear();
+                foreach (var item in currentGame.KeywordsFinded)
+                {
+                    KeywordsFinded.Add(item);
+                }
+                Keywords = currentGame.Keywords.ToList();
+            }
+        }
+
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-
+            SaveGame();
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-
+            GetGame();
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

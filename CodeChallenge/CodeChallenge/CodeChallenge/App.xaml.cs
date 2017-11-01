@@ -1,6 +1,8 @@
 ﻿using Prism.Unity;
 using CodeChallenge.Views;
 using Xamarin.Forms;
+using CodeChallenge.Infra;
+using Microsoft.Practices.Unity;
 
 namespace CodeChallenge
 {
@@ -12,7 +14,7 @@ namespace CodeChallenge
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("NavigationPage/MainPage?title=Hello%20from%20Xamarin.Forms");
+            NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes()
@@ -20,6 +22,7 @@ namespace CodeChallenge
             Container.RegisterTypeForNavigation<NavigationPage>();
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<KeywordChallengePage>();
+            Container.RegisterInstance(typeof(ILocalDatabase), "ILocalDatabase", new LocalDatabase(), new ContainerControlledLifetimeManager());
         }
     }
 }
