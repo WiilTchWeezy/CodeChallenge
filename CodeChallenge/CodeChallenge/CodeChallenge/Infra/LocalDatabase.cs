@@ -4,18 +4,11 @@ using System.Linq;
 
 namespace CodeChallenge.Infra
 {
-    public interface ILocalDatabase
-    {
-        void Save<T>(T obj) where T : RealmObject, new();
-        void Edit<T>(T obj) where T : RealmObject, new();
-        void Delete<T>(T obj) where T : RealmObject, new();
-        List<T> Get<T>() where T : RealmObject, new();
-    }
-    public class LocalDatabase : ILocalDatabase
+    public class LocalDatabase
     {
 
-        private Realm _realmDatabase;
-        public Realm RealmDatabase
+        private static Realm _realmDatabase;
+        public static Realm RealmDatabase
         {
             get
             {
@@ -31,7 +24,7 @@ namespace CodeChallenge.Infra
             }
         }
 
-        public void Delete<T>(T obj) where T : RealmObject, new()
+        public static void Delete<T>(T obj) where T : RealmObject, new()
         {
             RealmDatabase.Write(() =>
             {
@@ -39,7 +32,7 @@ namespace CodeChallenge.Infra
             });
         }
 
-        public void Edit<T>(T obj) where T : RealmObject, new()
+        public static void Edit<T>(T obj) where T : RealmObject, new()
         {
             RealmDatabase.Write(() =>
             {
@@ -47,12 +40,12 @@ namespace CodeChallenge.Infra
             });
         }
 
-        public List<T> Get<T>() where T : RealmObject, new()
+        public static List<T> Get<T>() where T : RealmObject, new()
         {
             return RealmDatabase.All<T>().ToList();
         }
 
-        public void Save<T>(T obj) where T : RealmObject, new()
+        public static void Save<T>(T obj) where T : RealmObject, new()
         {
             RealmDatabase.Write(() =>
             {

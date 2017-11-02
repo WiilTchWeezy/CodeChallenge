@@ -22,7 +22,6 @@ namespace CodeChallenge
             Container.RegisterTypeForNavigation<NavigationPage>();
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<KeywordChallengePage>();
-            Container.RegisterInstance(typeof(ILocalDatabase), "ILocalDatabase", new LocalDatabase(), new ContainerControlledLifetimeManager());
         }
     }
 }

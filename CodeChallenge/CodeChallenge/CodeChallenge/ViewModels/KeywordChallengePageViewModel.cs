@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace CodeChallenge.ViewModels
@@ -46,8 +45,8 @@ namespace CodeChallenge.ViewModels
         public List<string> Keywords { get; set; }
         public ObservableCollection<string> KeywordsFinded { get; set; }
         public int AllKeywords { get; set; }
-        private ILocalDatabase _localDatabase;
-        public KeywordChallengePageViewModel(ILocalDatabase localDatabase)
+        private KeywordGame _keywordGame;
+        public KeywordChallengePageViewModel()
         {
             Keywords = new List<string>();
             KeywordsFinded = new ObservableCollection<string>();
@@ -55,7 +54,7 @@ namespace CodeChallenge.ViewModels
             FillKeywords();
             AllKeywords = Keywords.Count;
             ScoreText = String.Format("{0} of {1}", KeywordsFinded.Count, AllKeywords);
-            _localDatabase = localDatabase;
+            SaveGame();
         }
         #region CommandsMethods
         private void TextChanged(TextChangedEventArgs e)
@@ -67,6 +66,7 @@ namespace CodeChallenge.ViewModels
                 KeywordsFinded.Add(keyword);
                 ScoreText = String.Format("{0} of {1}", KeywordsFinded.Count, AllKeywords);
                 TextTyped = "";
+                LocalDatabase.Save(new Words { KeywordGame = _keywordGame, Word = keyword });
             }
         }
         #endregion
@@ -100,7 +100,6 @@ namespace CodeChallenge.ViewModels
             Keywords.Add("explicit");
             Keywords.Add("fixed");
             Keywords.Add("goto");
-            Keywords.Add("in");
             Keywords.Add("is");
             Keywords.Add("base");
             Keywords.Add("case");
@@ -154,35 +153,34 @@ namespace CodeChallenge.ViewModels
 
         private void SaveGame()
         {
-            _localDatabase.Save(new KeywordGame {
-                Id = new Guid().ToString(),
-                Keywords = this.Keywords,
-                KeywordsFinded = this.KeywordsFinded.ToList()
-            });
-        }
-        private void GetGame()
-        {
-            var currentGames = _localDatabase.Get<KeywordGame>();
+            var currentGames = LocalDatabase.Get<KeywordGame>();
             var currentGame = currentGames.LastOrDefault();
-            if (currentGame != null)
+            if (currentGame == null)
             {
-                KeywordsFinded.Clear();
-                foreach (var item in currentGame.KeywordsFinded)
+                _keywordGame = new KeywordGame
                 {
-                    KeywordsFinded.Add(item);
+                    Id = System.Guid.NewGuid().ToString()
+                };
+                LocalDatabase.Save(_keywordGame);
+            }
+            else
+            {
+                _keywordGame = currentGame;
+                foreach (var item in _keywordGame.Keywords)
+                {
+                    KeywordsFinded.Add(item.Word);
                 }
-                Keywords = currentGame.Keywords.ToList();
             }
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            SaveGame();
+
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            GetGame();
+
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

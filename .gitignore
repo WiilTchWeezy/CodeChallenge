@@ -12,3 +12,6 @@
 /.vs/CodeChallenge/v15
 /.vs
 /CodeChallenge/.vs/CodeChallenge/v15/Server/sqlite3
+/CodeChallenge/.vs/CodeChallenge/v15/sqlite3/db.lock
+/CodeChallenge/.vs/CodeChallenge/v15/sqlite3/storage.ide-shm
+/CodeChallenge/.vs/CodeChallenge/v15/sqlite3/storage.ide-wal

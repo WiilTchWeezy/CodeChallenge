@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Infra\DatabaseObject\KeywordGame.cs" />
+    <Compile Include="Infra\DatabaseObject\Words.cs" />
     <Compile Include="Infra\LocalDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\KeywordChallengePageViewModel.cs" />

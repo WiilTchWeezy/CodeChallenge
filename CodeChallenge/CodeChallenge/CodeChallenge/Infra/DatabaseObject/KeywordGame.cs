@@ -1,6 +1,7 @@
 ﻿using Realms;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CodeChallenge.Infra.DatabaseObject
 {
@@ -8,7 +9,7 @@ namespace CodeChallenge.Infra.DatabaseObject
     {
         [PrimaryKey]
         public string Id { get; set; }
-        public IList<string> KeywordsFinded { get; set; }
-        public IList<string> Keywords { get; set; }
+        [Backlink(nameof(Words.KeywordGame))]
+        public IQueryable<Words> Keywords { get; }
     }
 }
