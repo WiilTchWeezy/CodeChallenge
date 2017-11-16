@@ -169,6 +169,7 @@ namespace CodeChallenge.ViewModels
                 foreach (var item in _keywordGame.Keywords)
                 {
                     KeywordsFinded.Add(item.Word);
+                    Keywords.Remove(item.Word);
                 }
             }
         }
