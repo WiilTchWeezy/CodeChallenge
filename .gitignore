@@ -15,3 +15,8 @@
 /CodeChallenge/.vs/CodeChallenge/v15/sqlite3/db.lock
 /CodeChallenge/.vs/CodeChallenge/v15/sqlite3/storage.ide-shm
 /CodeChallenge/.vs/CodeChallenge/v15/sqlite3/storage.ide-wal
+/CodeChallenge/CodeChallenge/CodeChallenge/bin/Release
+/CodeChallenge/CodeChallenge/CodeChallenge/obj/Release
+/CodeChallenge/CodeChallenge/CodeChallenge.Droid/bin/Release
+/CodeChallenge/CodeChallenge/CodeChallenge.Droid/obj/Release
+/CodeChallenge/CodeChallenge/CodeChallenge.iOS/obj/iPhone/Release
