@@ -11,12 +11,14 @@ namespace CodeChallenge.ViewModels
     {
         #region Commands
         public DelegateCommand KeywordChallengeCommand { get; set; }
+        public DelegateCommand QuestionChallengeCommand { get; set; }
         #endregion
 
         private INavigationService _navigationService;
         public MainPageViewModel(INavigationService navigationService)
         {
             KeywordChallengeCommand = new DelegateCommand(NavigateToKeywordChallenge);
+            QuestionChallengeCommand = new DelegateCommand(NavigateToQuestionChallenge);
             _navigationService = navigationService;
         }
 
@@ -24,6 +26,11 @@ namespace CodeChallenge.ViewModels
         private void NavigateToKeywordChallenge()
         {
             _navigationService.NavigateAsync("KeywordChallengePage");
+        }
+
+        private void NavigateToQuestionChallenge()
+        {
+            _navigationService.NavigateAsync("QuestionChallengePage");
         }
         #endregion
 

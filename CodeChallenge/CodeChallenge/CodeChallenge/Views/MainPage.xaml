@@ -6,19 +6,25 @@
              x:Class="CodeChallenge.Views.MainPage"
              Title="CodeChallenge"
              xmlns:controls="clr-namespace:CodeChallenge.Views.Controls">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="100"/>
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="*"/>
-      <ColumnDefinition Width="*"/>
-    </Grid.ColumnDefinitions>
-    <controls:CustomFrame Grid.Row="0" Grid.Column="0" HasShadow="True" BackgroundColor="Red" Margin="5" TapCommand="{Binding KeywordChallengeCommand}">
-      <StackLayout>
-        <Image Source="codeicon"/>
-        <Label Text="Keyword Challenge" TextColor="#FFFFFF" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="14"/>
-      </StackLayout>
-    </controls:CustomFrame>
-  </Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <controls:CustomFrame Grid.Row="0" Grid.Column="0" HasShadow="True" BackgroundColor="Red" Margin="5" TapCommand="{Binding KeywordChallengeCommand}">
+            <StackLayout>
+                <Image Source="codeicon"/>
+                <Label Text="Keyword Challenge" TextColor="#FFFFFF" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="14"/>
+            </StackLayout>
+        </controls:CustomFrame>
+        <controls:CustomFrame Grid.Row="0" Grid.Column="1" HasShadow="True" BackgroundColor="Red" Margin="5" TapCommand="{Binding QuestionChallengeCommand}">
+            <StackLayout>
+                <Image Source="codeicon"/>
+                <Label Text="Question Challenge" TextColor="#FFFFFF" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="14"/>
+            </StackLayout>
+        </controls:CustomFrame>
+    </Grid>
 </ContentPage>
