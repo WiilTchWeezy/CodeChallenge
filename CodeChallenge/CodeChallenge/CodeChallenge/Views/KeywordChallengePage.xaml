@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:CodeChallenge.Views.Controls">
     <StackLayout>
         <Label Text="{Binding ScoreText}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
-        <Label Text="How many keywords from C# you can remember ?"  VerticalOptions="CenterAndExpand" FontAttributes="Bold" Margin="5" />
+        <Label Text="Quantas palavras reservadas de C# você consegue lembrar?"  VerticalOptions="CenterAndExpand" FontAttributes="Bold" Margin="5" />
         <controls:TextChangedEntry Text="{Binding TextTyped}" TextChangedCommand="{Binding TextChangedCommand}" HorizontalOptions="FillAndExpand"/>
         <ListView ItemsSource="{Binding KeywordsFinded}" VerticalOptions="StartAndExpand">
             <ListView.ItemTemplate>
